@@ -27,7 +27,7 @@ mosquitto_pub -t config/state -m 0
 
 Change sensor data reporting period (value in seconds, default is 1):
 ```bash
-mosquitto_pub -t config/period-m <value>
+mosquitto_pub -t config/period -m <value>
 ```
 
 
