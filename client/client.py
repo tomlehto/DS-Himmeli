@@ -1,7 +1,14 @@
+#Set to 1 if BMP280 sensor is connected to device
+REAL_SENSOR = 0
+
 import paho.mqtt.client as mqtt
 import random
 import time
 import sys
+if REAL_SENSOR:
+    import board
+    import busio
+    import adafruit_bmp280
 
 state = 1
 period = 1
@@ -36,7 +43,15 @@ def on_message(client, userdata, msg):
             period = int(msg.payload)
 
 def read_sensor():
-    return random.randint(-30,30)
+    if REAL_SENSOR:
+        return sensor.temperature
+    else:
+        return random.randint(-30,30)
+
+#Initialize BMP280 sensor via I2C
+if REAL_SENSOR:
+    i2c = busio.I2C(board.SCL, board.SDA)
+    sensor = adafruit_bmp280.Adafruit_BMP280_I2C(i2c, address=0x76)
 
 #Initialize MQTT Client
 client = mqtt.Client()
