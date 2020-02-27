@@ -30,4 +30,11 @@ Change sensor data reporting period (value in seconds, default is 1):
 mosquitto_pub -t config/period -m <value>
 ```
 
+## RasPi deployment
+To use with BMP280 sensor connected to a Raspberry Pi device, change the following flag to 1:
+```python
+#Set to 1 if BMP280 sensor is connected to device
+REAL_SENSOR = 0
+```
+
 
