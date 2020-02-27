@@ -23,14 +23,14 @@ chmod +x demo_script.sh
 Set sensor state to be on or off:
 ```bash
 #on
-mosquitto_pub -t config/state -m 1
+mosquitto_pub -h <hostname> -t config/state -m 1
 #off
-mosquitto_pub -t config/state -m 0
+mosquitto_pub -h <hostname> -t config/state -m 0
 ```
 
 Change sensor data reporting period (value in seconds, default is 1):
 ```bash
-mosquitto_pub -t config/period -m <value>
+mosquitto_pub -h <hostname> -t config/period -m <value>
 ```
 
 ## RasPi deployment
@@ -43,16 +43,16 @@ REAL_SENSOR = 0
 ## Client program usage
 Start your nodes with
 ```bash
-python client/client.py <ip_address> <client_id>
+python client/client.py <hostname> <client_id>
 ```
-where ip_address is the IP address of your MQTT broker, and client_id is either 1, 2 or 3.
+where hostname is the host name of your MQTT broker, and client_id is either 1, 2 or 3.
 
 ## Dashboard program usage
 Start the sensor data visualizer with
 ```bash
-python dashboard/dashboard.py <ip_address>
+python dashboard/dashboard.py <hostname>
 ```
-where ip_address is the IP address of your MQTT broker.
+where hostname is the host name of your MQTT broker.
 ## MQTT broker deployment to Amazon EC2
 1. Launch EC2 instance from EC2 dashboard, e.g. Amazon Linux 2 AMI instance should work fine.
 2. Connect to EC2 instance via SSH, and run following commands to install Mosquitto (commands may differ if you chooce different AMI):
@@ -65,6 +65,6 @@ sudo yum -y install mosquitto
 ```bash
 mosquitto
 ```
-5. After that, just connect your clients and dashboard program to the ip address of your EC2 instance.
+5. After that, just connect your clients and dashboard program to the hostname of your EC2 instance.
 
 
