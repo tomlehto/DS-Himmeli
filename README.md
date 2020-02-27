@@ -37,4 +37,31 @@ To use with BMP280 sensor connected to a Raspberry Pi device, change the followi
 REAL_SENSOR = 0
 ```
 
+## Client program usage
+Start your nodes with
+```bash
+python client/client.py <ip_address> <client_id>
+```
+where ip_address is the IP address of your MQTT broker, and client_id is either 1, 2 or 3.
+
+## Dashboard program usage
+Start the sensor data visualizer with
+```bash
+python dashboard/dashboard.py <ip_address>
+```
+where ip_address is the IP address of your MQTT broker.
+## MQTT broker deployment to Amazon EC2
+1. Launch EC2 instance from EC2 dashboard, e.g. Amazon Linux 2 AMI instance should work fine.
+2. Connect to EC2 instance via SSH, and run following commands to install Mosquitto (commands may differ if you chooce different AMI):
+```bash
+sudo amazon-linux-extras install epel
+sudo yum -y install mosquitto
+```
+3. Allow inbound TCP for port 1883 for MQTT.
+4. Launch Mosquitto with:
+```bash
+mosquitto
+```
+5. After that, just connect your clients and dashboard program to the ip address of your EC2 instance.
+
 
