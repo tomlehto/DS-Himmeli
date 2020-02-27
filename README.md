@@ -1,6 +1,9 @@
 # DS-Himmeli
 Course project for 521290S Distributed Systems
 
+![](example.gif)
+*Dashboard program output with one Rasberry Pi transmitting real data from a BMP280 sensor, and two dummy clients transmitting random data. MQTT broker is running in an Amazon EC2 instance.*
+
 ## Demo
 Following Python modules are required:
 ```
