@@ -5,10 +5,12 @@ import paho.mqtt.client as mqtt
 import random
 import time
 import sys
+
 if REAL_SENSOR:
     import board
     import busio
     import adafruit_bmp280
+
 
 state = 1
 period = 1

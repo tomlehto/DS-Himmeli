@@ -34,7 +34,10 @@ def log_data(client_id, data):
     global temps
     times[int(client_id)-1].append(datetime.datetime.now())
     temps[int(client_id)-1].append(float(data))
-
+    # Remove first datapoint after 10 values have arrived
+    if len(times[int(client_id)-1]) >= 100:
+        times[int(client_id)-1].pop(0)
+        temps[int(client_id)-1].pop(0)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
