@@ -39,8 +39,6 @@ def log_data(client_id, data):
         times[int(client_id)-1].pop(0)
         temps[int(client_id)-1].pop(0)
 
-
-
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
